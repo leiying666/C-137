@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<string.h>
+#include<errno.h>
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+#include<assert.h>
+
+int my_strlen(const char* str)
+{
+	int c = 0;
+	assert(str != NULL);
+	while (*str)
+	{
+		c++;
+		str++;
+	}
+	return c;
+}
+int main()
+{
+	if (strlen("abc") - strlen("abcdef") > 0)
+	{
+		printf("haha\n");
+	}
+	else
+	{
+		printf("hehe\n");
+	}
+	if (my_strlen("abc") - my_strlen("abcdef") > 0)
+	{
+		printf("haha");
+	}
+	else
+	{
+		printf("hehe");
+	}
+	return 0;
+}
+
+解析strlen
+其因为返回的值一定为正，则返回类型被设为size_t(即unsigned int)没有负数，则-3在unsigned int 里属于很大的正数，所以输出haha
